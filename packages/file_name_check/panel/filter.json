@@ -1,5 +1,1 @@
-{
-    "ignor_dirs": [],                   
-    "ignor_extend_name_flies": [],
-    "custom_regular": ""
-}
+{"ignor_dirs":["avb","aaa"],"ignor_extend_name_flies":["mp3"],"custom_regular":""}

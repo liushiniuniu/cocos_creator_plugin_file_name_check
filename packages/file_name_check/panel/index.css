@@ -18,6 +18,9 @@ header {
 .desc {
   margin: 5px;
 }
+.desc-label {
+  width: 150,
+}
 
 section.res {
   margin: 6px 2px;
@@ -27,4 +30,8 @@ section.res {
 
 section.res ui-input {
   margin: 5px;
+}
+
+section.res label {
+  font-size: 12px;
 }

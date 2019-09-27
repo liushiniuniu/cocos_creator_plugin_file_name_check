@@ -32,7 +32,6 @@ module.exports = {
 
   _check() {
       const dirPath = path_1.join(Editor.projectPath, 'assets');
-
       NameCheckModule.NameCheck.findSync(dirPath);
   }
 };

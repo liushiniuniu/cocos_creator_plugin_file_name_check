@@ -1,21 +1,33 @@
 <div id="warp" class="warp">
     <header>
         <br/>
-        <div class="desc" >默认检查文件名规则为：数字+ 英文 + 下划线</div>
+        <label class="desc" >默认检查文件名规则为：数字+ 英文 + 下划线</label>
     </header>
     
     <br/>
     
     <section class="res">
         <br/>
-        
-        <ui-input v-value="input" placeholder="自定义检查规则（正则表达式）" style="width:200">
+        <label>自定义(可选):</label>
+        <br/>
+        <div class="desc-label">
+            <label>检查规则：</label>
+        </div>
+        <ui-input v-value="input_reg" placeholder="正则表达式" style="width:200">
         </ui-input>
 
-        <ui-input v-value="input" placeholder="忽略文件夹名，用 “,” 分割" style="width:200">
+        <br/>
+        <div class="desc-label">
+            <label>忽略文件夹名称：</label>
+        </div>
+        <ui-input v-value="input_dir" placeholder="用“,” 分割, 如： resources,animation" style="width:200">
         </ui-input>
 
-        <ui-input v-value="input" placeholder="忽略扩展文件名，用 “,” 分割" style="width:200">
+        <br/>
+        <div class="desc-label">
+            <label>忽略扩展文件名：</label>
+        </div>
+        <ui-input v-value="input_extend" placeholder="用 “,” 分割, 如：meta,psd" style="width:200">
         </ui-input>
 
 

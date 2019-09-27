@@ -12,18 +12,40 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const path_1 = require("path");
 const dirPath = path_1.join(Editor.projectPath, 'assets');
-const ignoreDir = ['.svn', 'Animation', '.DS_Store', 'animation'];
-const ignorExtends = ['DS_Store', 'meta'];
+
+var ignoreDir = ['.svn', '.DS_Store', '.git'];
+var ignorExtends = ['DS_Store', 'meta'];
 
 /**
  *
  */
 class NameCheck {
+
+    static init() {
+        if (!this.isInit) {
+            this._getLocalSettings();
+            this.isInit = true;
+        }
+    }
+
+    static _getLocalSettings() {
+        let panelPath = path_1.join(__dirname, 'panel');
+        Editor.log(panelPath)
+        
+        this._settings = JSON.parse( fs.readFileSync( path_1.join(panelPath, 'filter.json')) );
+        ignorExtends = ignorExtends.concat( this._settings.ignor_extend_name_flies);
+        ignoreDir = ignoreDir.concat( this._settings.ignor_dirs );
+
+        Editor.log(JSON.stringify(ignoreDir))
+        Editor.log(JSON.stringify(ignorExtends))
+    }
+
     /**
      * 查找文件
      * @param startPath
      */
     static findSync(startPath) {
+        this.init();
         let result = [];
         function finder(path) {
             let files = fs.readdirSync(path);
@@ -85,4 +107,5 @@ class NameCheck {
     }
 }
 exports.NameCheck = NameCheck;
-NameCheck.findSync(dirPath);
+// NameCheck.init();
+// NameCheck.findSync(dirPath);
