@@ -1,0 +1,19 @@
+{
+  "name": "file_name_check",
+  "version": "0.0.1",
+  "description": "一份简单的扩展包",
+  "author": "刘磊",
+  "main": "main.js",
+  "main-menu": {
+    "插件/文件名自动检查": {
+      "message": "file_name_check:say-hello"
+    }
+  },
+  "panel": {
+    "main": "panel/index.html",
+    "type": "simple",
+    "title": "Simple Panel",
+    "width": 400,
+    "height": 300
+  }
+}
