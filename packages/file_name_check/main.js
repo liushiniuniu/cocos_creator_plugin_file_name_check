@@ -12,7 +12,7 @@ module.exports = {
   },
 
   messages: {
-    'say-hello'() {
+    'check'() {
       this._check();
     },
 
@@ -22,6 +22,10 @@ module.exports = {
 
     'asset-db:assets-created' ()  {
         this._check();
+    },
+
+    'custom_set'() {
+        Editor.Panel.open('file_name_check');
     }
 
   },
