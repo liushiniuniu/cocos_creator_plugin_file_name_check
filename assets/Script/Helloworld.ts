@@ -12,10 +12,6 @@ export default class Helloworld extends cc.Component {
 
 
     start () {
-
-
-
         this.label.string = this.text;
-
     }
 }

@@ -5,6 +5,7 @@ var NameCheckModule = null;
 module.exports = {
   load () {
      NameCheckModule =  Editor.require("packages://file_name_check/name_check")
+
   },
 
   unload () {
@@ -26,6 +27,13 @@ module.exports = {
 
     'custom_set'() {
         Editor.Panel.open('file_name_check');
+    },
+
+    'save_setting_success'() {
+        Editor.log('重新设置生效，开始重新检查...');
+        NameCheckModule =  Editor.require("packages://file_name_check/name_check")
+        NameCheckModule.NameCheck.reset();
+        this._check();
     }
 
   },

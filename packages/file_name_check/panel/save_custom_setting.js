@@ -6,7 +6,7 @@ const path = require('path');
 class SaveCustomSetting {
 
     static save(newReg, dirs, extendNames) {
-        if (newReg) {
+        if (newReg != null) {
             this._json.custom_regular = newReg;
         }
 
@@ -29,7 +29,8 @@ class SaveCustomSetting {
     static _save(data) {
         fs.writeFileSync(path.join(__dirname, 'filter.json'), JSON.stringify(data));
         
-        Editor.info('保存自定义设置成功')
+        Editor.info('保存自定义设置成功');
+        Editor.Ipc.sendToPackage('file_name_check', 'save_setting_success');
     }
 
     static getIgnorDirStr() {

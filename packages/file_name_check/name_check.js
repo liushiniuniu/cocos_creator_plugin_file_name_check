@@ -15,11 +15,20 @@ const dirPath = path_1.join(Editor.projectPath, 'assets');
 
 var ignoreDir = ['.svn', '.DS_Store', '.git'];
 var ignorExtends = ['DS_Store', 'meta'];
+var defaultReg =  '/^\w+$/';
 
 /**
  *
  */
 class NameCheck {
+
+    static reset() {
+        ignoreDir = ['.svn', '.DS_Store', '.git'];
+        ignorExtends = ['DS_Store', 'meta'];
+        defaultReg =  /^\w+$/;
+        this.isInit = false;
+        this.init();
+    }
 
     static init() {
         if (!this.isInit) {
@@ -30,14 +39,16 @@ class NameCheck {
 
     static _getLocalSettings() {
         let panelPath = path_1.join(__dirname, 'panel');
-        Editor.log(panelPath)
         
         this._settings = JSON.parse( fs.readFileSync( path_1.join(panelPath, 'filter.json')) );
         ignorExtends = ignorExtends.concat( this._settings.ignor_extend_name_flies);
         ignoreDir = ignoreDir.concat( this._settings.ignor_dirs );
-
-        Editor.log(JSON.stringify(ignoreDir))
-        Editor.log(JSON.stringify(ignorExtends))
+        if (this._settings.custom_regular.trim() == '') {
+            defaultReg =  /^\w+$/;
+            return;
+        } else {
+            defaultReg = eval (this._settings.custom_regular);
+        }
     }
 
     /**
@@ -54,7 +65,6 @@ class NameCheck {
                 const fileName = splitNames[0];
                 const extendName = splitNames[splitNames.length - 1];
                 // 去掉 后缀名
-                // let fileName =  originFileName.substring(0,originFileName.indexOf("."));
                 if (!NameCheck._isIgnoreDir(path)) {
                     let fPath = path_1.join(path, originFileName);
                     let stats = fs.statSync(fPath);
@@ -76,9 +86,7 @@ class NameCheck {
      * @param fileName 文件名
      */
     static isStandered(fileName, filePath) {
-        var regex = /^\w+$/;
-        let result = regex.test(fileName);
-        // result ? null : console.log('文件命名不规范，路径为： ', filePath);
+        let result = defaultReg.test(fileName);
         result ? null : Editor.error('文件命名不规范，路径为： ', filePath);
         return result;
     }
@@ -107,5 +115,3 @@ class NameCheck {
     }
 }
 exports.NameCheck = NameCheck;
-// NameCheck.init();
-// NameCheck.findSync(dirPath);
