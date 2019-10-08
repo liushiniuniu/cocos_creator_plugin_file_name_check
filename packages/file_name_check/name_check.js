@@ -11,6 +11,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const path_1 = require("path");
+Editor.log(222, cc.ENGINE_VERSION)
 const dirPath = path_1.join(Editor.projectPath, 'assets');
 
 var ignoreDir = ['.svn', '.DS_Store', '.git'];

@@ -5,10 +5,10 @@
   "author": "刘磊",
   "main": "main.js",
   "main-menu": {
-    "插件/文件名自动检查": {
+    "插件/文件名自动检查/开始检查": {
       "message": "file_name_check:check"
     },
-    "插件/自定义设置": {
+    "插件/文件名自动检查/自定义设置": {
       "message": "file_name_check:custom_set"
     }
   },

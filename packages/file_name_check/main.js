@@ -39,7 +39,21 @@ module.exports = {
   },
 
   _check() {
-      const dirPath = path_1.join(Editor.projectPath, 'assets');
+      let curProjectPath = null;
+      // 1.x 版本
+      if (Editor.projectInfo && Editor.projectInfo.path) {
+        curProjectPath = Editor.projectInfo.path;
+      } 
+      // 2.x 版本
+      else if(Editor.Project && Editor.Project.path) {
+        curProjectPath = Editor.Project.path;
+      }
+
+      if (!curProjectPath) {
+        Editor.error('没获取到项目路径');
+      }
+
+      const dirPath = path_1.join(curProjectPath, 'assets');
       NameCheckModule.NameCheck.findSync(dirPath);
   }
 };
