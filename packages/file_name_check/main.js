@@ -40,20 +40,34 @@ module.exports = {
 
   _check() {
       let curProjectPath = null;
-      // 1.x 版本
-      if (Editor.projectInfo && Editor.projectInfo.path) {
+      let mainVersion =   this._getCocosCreatorMainVersion();
+      if (mainVersion === 1) {
         curProjectPath = Editor.projectInfo.path;
-      } 
-      // 2.x 版本
-      else if(Editor.Project && Editor.Project.path) {
-        curProjectPath = Editor.Project.path;
       }
 
+      if (mainVersion === 2) {
+        curProjectPath = Editor.Project.path;
+      }
+      
       if (!curProjectPath) {
         Editor.error('没获取到项目路径');
       }
 
       const dirPath = path_1.join(curProjectPath, 'assets');
       NameCheckModule.NameCheck.findSync(dirPath);
+  },
+
+  /**获取cocos creator 主版本号 */
+  _getCocosCreatorMainVersion() {
+    let versionStr = Editor.App.version;
+    let arr = versionStr.split('.');
+    if (arr[0] == '1') {
+      return 1;
+    }
+
+    if (arr[0] == '2') {
+      return 2;
+    }
+
   }
 };
