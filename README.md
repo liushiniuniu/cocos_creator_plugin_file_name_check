@@ -10,7 +10,9 @@ cocos creator 插件： 文件名格式检查
 由于时间精力有限，只测试了1.9.3 版本 和2.1.2 版本。 运行正常， 原理上其他版本也应该能用， 若是有问题，欢迎提issues
 
 - 示例使用图片
+-
+
 ![files](./readMeImgs/files.png)
 ![check_result](./readMeImgs/check_result.png)
-![custom_pannel](./readMeImgs/custom_pannel.png)
+![custom_pannel](./readMeImgs/custom_panel.png)
 ![save_settings](./readMeImgs/save_settings.png)
