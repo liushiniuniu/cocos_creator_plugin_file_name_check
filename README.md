@@ -13,6 +13,7 @@ cocos creator 插件： 文件名格式检查
 -
 
 ![files](./readMeImgs/files.png)
+![plugin](./readMeImgs/plugin_menu.png)
 ![check_result](./readMeImgs/check_result.png)
 ![custom_pannel](./readMeImgs/custom_panel.png)
 ![save_settings](./readMeImgs/save_settings.png)
